@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 
 namespace Waterfall
@@ -19,8 +20,11 @@ namespace Waterfall
   [DisplayName("Custom (Pull)")]
   public class CustomPullController : WaterfallController
   {
+    [Persistent] public string moduleTypeName = "ModuleEngines";
+    [Persistent] public string engineIDFieldName = String.Empty; // a field on the module used for disambiguation if more than one exists
     [Persistent] public string engineID   = String.Empty;
     [Persistent] public string memberName = "currentThrottle"; // There is ThrottleController for that, but works as an example
+    [Persistent] public string predicateFieldName = String.Empty; // the name of a boolean field on the module which must be true for the value to be pulled
 
     [Persistent] public float minInputValue;
     [Persistent] public float maxInputValue = 1;
@@ -29,8 +33,10 @@ namespace Waterfall
     [Persistent] public float responseRateDown;
     private float currentValue;
 
-    private ModuleEngines engineController;
+    private PartModule sourceModule;
     private Func<float>   pullValueMethod = () => 0;
+    private Func<PartModule, bool> TestPredicate = (module) => true;
+    private Func<PartModule, string> GetEngineID = (module) => String.Empty;
 
     public CustomPullController() : base() { }
 
@@ -42,17 +48,68 @@ namespace Waterfall
 
       values = new float[1];
 
-      engineController = host.GetComponents<ModuleEngines>().FirstOrDefault(x => x.engineID == engineID);
-      if (engineController == null)
+      Type moduleType = AssemblyLoader.GetClassByName(typeof(PartModule), moduleTypeName);
+
+      if (moduleType == null)
       {
-        Utils.Log($"[{nameof(CustomPullController)}]: Could not find engine ID {engineID}, using first module if available", LogType.Effects);
-        engineController = host.part.FindModuleImplementing<ModuleEngines>();
+        Utils.LogError($"[{nameof(CustomPullController)}]: Could not find part module type {moduleTypeName}, effect controller will not do anything");
+        return;
       }
 
-      if (engineController == null)
+      // set default field names for engines, for backwards compatibility
+      if (moduleTypeName == "ModuleEngines")
       {
-        Utils.LogError($"[{nameof(CustomPullController)}]: Could not find any {nameof(ModuleEngines)} to use with {nameof(CustomPullController)} named {name}, effect controller will not do anything");
-        return;
+        if (engineIDFieldName == String.Empty)
+          engineIDFieldName = "engineID";
+        if (predicateFieldName == string.Empty)
+          engineIDFieldName = "isOperational";
+      }
+
+      if (!String.IsNullOrEmpty(engineIDFieldName))
+      {
+        FieldInfo engineIDField = moduleType.GetField(engineIDFieldName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (engineIDField == null && !String.IsNullOrEmpty(engineID))
+           Utils.LogError($"[{nameof(CustomPullController)}]: Could not find field {engineIDFieldName} on module type {moduleTypeName}");
+        else if (engineIDField.FieldType != typeof(string))
+        {
+          Utils.LogError($"[{nameof(CustomPullController)}]: Field {engineIDFieldName} on module type {moduleTypeName} is not of type string");
+          engineIDField = null;
+        }
+
+        if (engineIDField != null)
+          GetEngineID = (module) => (string)engineIDField.GetValue(module);
+      }
+      if (!String.IsNullOrEmpty(predicateFieldName))
+      {
+        FieldInfo predicateField = moduleType.GetField(predicateFieldName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+        if (predicateField == null)
+          Utils.LogError($"[{nameof(CustomPullController)}]: Could not find field predicateFieldName {predicateFieldName} on module type {moduleTypeName}.  You may need to set this to an empty string if you're not using it.");
+        else if (predicateField.FieldType != typeof(bool))
+        {
+          Utils.LogError($"[{nameof(CustomPullController)}]: Field {predicateFieldName} on module type {moduleTypeName} is not of type bool");
+          predicateField = null;
+        }
+
+        if (predicateField != null)
+          TestPredicate = (module) => (bool)predicateField.GetValue(module);
+      }
+
+      UnityEngine.Component[] possibleModules = host.GetComponents(moduleType);
+      sourceModule = possibleModules.FirstOrDefault(c => GetEngineID(c as PartModule) == engineID) as PartModule;
+
+      if (sourceModule == null && possibleModules.Length > 0)
+      {
+        if (possibleModules.Length > 0)
+        {
+          Utils.Log($"[{nameof(CustomPullController)}]: Could not find engine ID {engineID}, using first module", LogType.Effects);
+          sourceModule = possibleModules[0] as PartModule;
+        }
+        else
+        {
+          Utils.LogError($"[{nameof(CustomPullController)}]: Could not find any {moduleTypeName} to use with {nameof(CustomPullController)} named {name}, effect controller will not do anything");
+          return;
+        }
+
       }
 
       pullValueMethod = FindSuitableMemberOnEnginesModule();
@@ -62,24 +119,24 @@ namespace Waterfall
     {
       const BindingFlags bindingFlags = BindingFlags.Instance | BindingFlags.Public;
 
-      var methodInfo = engineController.GetType()
+      var methodInfo = sourceModule.GetType()
         .GetMethods(bindingFlags)
         .FirstOrDefault(m => m.Name == memberName && m.GetParameters().Length == 0);
 
       if (methodInfo != null)
-        return () => Convert.ToSingle(methodInfo.Invoke(engineController, new object[0]));
+        return () => Convert.ToSingle(methodInfo.Invoke(sourceModule, new object[0]));
 
-      var propertyInfo = engineController.GetType()
+      var propertyInfo = sourceModule.GetType()
         .GetProperty(memberName, bindingFlags);
 
       if (propertyInfo != null)
-        return () => (float)propertyInfo.GetValue(engineController);
+        return () => (float)propertyInfo.GetValue(sourceModule);
 
-      var fieldInfo = engineController.GetType()
+      var fieldInfo = sourceModule.GetType()
         .GetField(memberName, bindingFlags);
 
       if (fieldInfo != null)
-        return () => Convert.ToSingle(fieldInfo.GetValue(engineController));
+        return () => Convert.ToSingle(fieldInfo.GetValue(sourceModule));
 
       Utils.LogError($"[{nameof(CustomPullController)}]: Could not find any public instance method, property or field named {memberName} to use with {nameof(CustomPullController)} named {name}, effect controller will not do anything");
       return () => 0;
@@ -101,13 +158,13 @@ namespace Waterfall
 
     private float GetValue()
     {
-      if (engineController == null)
+      if (sourceModule == null)
         return 0;
 
-      if (!engineController.isOperational)
+      if (!TestPredicate(sourceModule))
         return 0;
 
-      engineID = engineController.engineID; // Make sure that engineID is in-sync with actually used module
+      engineID = GetEngineID(sourceModule); // Make sure that engineID is in-sync with actually used module
 
       try
       {
