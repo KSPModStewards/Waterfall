@@ -321,7 +321,7 @@ namespace Waterfall
       }
       else
       {
-        config = config.CreateCopy();
+        config = node.CreateCopy();
         if (node.HasNode(WaterfallConstants.EffectNodeName))
           effectsNodes = node.GetNodes(WaterfallConstants.EffectNodeName);
         if (node.HasNode(WaterfallConstants.TemplateNodeName))
