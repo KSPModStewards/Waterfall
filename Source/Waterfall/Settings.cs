@@ -24,9 +24,9 @@ namespace Waterfall
     public static float MinimumLightIntensity = 0.05f;
 
     public static int TransparentQueueBase = 3000;
-    public static int DistortQueue = TransparentQueueBase + 2;
     public static int QueueDepth = 750;
     public static float SortedDepth = 1000f;
+    public static int DistortQueue = TransparentQueueBase + QueueDepth + 2;
 
     public static bool EnableLights = true;
     public static bool EnableDistortion = true;
