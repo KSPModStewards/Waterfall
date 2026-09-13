@@ -1,7 +1,8 @@
-## Unreleased
+## 0.11.1 - 2026-09-13
 
 - Fix broken logic for copying config nodes in some cases
 - Fix distortion effects drawing before plumes (Thanks @BobKermanIndustries for the report and investigation)
+
 
 ## 0.11.0 - 2026-04-29
 
