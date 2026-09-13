@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Waterfall", "Source\Waterfa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2CE39761-6DC8-4B05-AE00-434FC369C224}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		CHANGELOG.md = CHANGELOG.md
 		README.md = README.md
 		Source\Waterfall\Waterfall.csproj.user = Source\Waterfall\Waterfall.csproj.user

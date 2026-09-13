@@ -1,9 +1,0 @@
-{
-  "NAME": "Waterfall",
-  "URL": "https://github.com/KSPModStewards/Waterfall/releases/latest/download/Waterfall.version",
-  "DOWNLOAD": "https://github.com/KSPModStewards/Waterfall",
-  "KSP_VERSION": "1.12",
-  "KSP_VERSION_MIN": "1.8",
-  "KSP_VERSION_MAX": "1.12",
-  "VERSION": "0.10.6.0"
-}

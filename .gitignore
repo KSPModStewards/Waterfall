@@ -11,5 +11,6 @@ obj/
 *.suo
 /Source/Waterfall/packages/
 GameData/Waterfall/Versioning/Waterfall.version
+GameData/Waterfall/Waterfall.version
 GameData/Waterfall/Plugins/Waterfall.dll
 GameData/Waterfall/Plugins/Waterfall.pdb
