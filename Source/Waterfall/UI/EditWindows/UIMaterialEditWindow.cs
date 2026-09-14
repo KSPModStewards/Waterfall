@@ -21,7 +21,7 @@ namespace Waterfall.UI
     {
       materialID = 0;
       model = modelToEdit;
-      Utils.Log($"[UIMaterialEditWindow]: Started editing materials on {modelToEdit}", LogType.UI);
+      Utils.Log($"[UIMaterialEditWindow]: Started editing materials on {modelToEdit}");
 
       materialList = new string[model.materials.Count];
       for (int i = 0; i < model.materials.Count; i++)
@@ -40,7 +40,7 @@ namespace Waterfall.UI
     public void ChangeMaterial(WaterfallModel modelToEdit)
     {
       model = modelToEdit;
-      Utils.Log($"[UIMaterialEditWindow]: Started editing materials on {modelToEdit}", LogType.UI);
+      Utils.Log($"[UIMaterialEditWindow]: Started editing materials on {modelToEdit}");
       materialID = 0;
       materialList = new string[model.materials.Count];
       for (int i = 0; i < model.materials.Count; i++)
@@ -141,7 +141,7 @@ namespace Waterfall.UI
 
     protected void InitializeShaderProperties(Material m)
     {
-      Utils.Log($"[MaterialEditor] Generating shader property map for {m}", LogType.UI);
+      Utils.Log($"[MaterialEditor] Generating shader property map for {m}");
 
       materialControls = new();
 

@@ -21,7 +21,7 @@ namespace Waterfall.UI
     {
       windowID = new Random().Next();
 
-      Utils.Log("[UI]: Start fired", LogType.UI);
+      Utils.Log("[UI]: Start fired");
       showWindow = show;
     }
 
@@ -51,7 +51,7 @@ namespace Waterfall.UI
     /// </summary>
     public void ToggleWindow()
     {
-      Utils.Log("[UI]: Toggle Window", LogType.UI);
+      Utils.Log("[UI]: Toggle Window");
       showWindow = !showWindow;
     }
 
@@ -65,7 +65,7 @@ namespace Waterfall.UI
     /// </summary>
     protected virtual void InitUI()
     {
-      Utils.Log("[UI]: Initializing", LogType.UI);
+      Utils.Log("[UI]: Initializing");
       initUI = true;
     }
 

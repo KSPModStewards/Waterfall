@@ -31,7 +31,7 @@ namespace Waterfall
     /// </summary>
     public static void LoadTemplates()
     {
-      Utils.Log("[Template Libary]: Loading effect templates", LogType.Loading);
+      Utils.Log("[Template Libary]: Loading effect templates");
       var nodes = GameDatabase.Instance.GetConfigNodes(WaterfallConstants.TemplateLibraryNodeName);
 
       foreach (var node in nodes)
@@ -41,7 +41,7 @@ namespace Waterfall
           try
           {
             Library.Add(node.GetValue("templateName"), new(node));
-            Utils.Log($"[Template Libary]: Added template {node.GetValue("templateName")}", LogType.Loading);
+            Utils.Log($"[Template Libary]: Added template {node.GetValue("templateName")}");
           }
           catch (Exception)
           {

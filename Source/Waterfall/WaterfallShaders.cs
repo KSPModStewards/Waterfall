@@ -27,7 +27,7 @@ namespace Waterfall
     /// <returns></returns>
     public static Shader GetShader(string shaderName)
     {
-      Utils.Log("[ShaderLoader]: Getting shader " + shaderName, LogType.Effects);
+      Utils.Log("[ShaderLoader]: Getting shader " + shaderName);
       return ShaderDictionary.ContainsKey(shaderName) ? ShaderDictionary[shaderName] : null;
     }
 
@@ -49,7 +49,7 @@ namespace Waterfall
 
       string path = Path.Combine(KSPUtil.ApplicationRootPath);
 
-      Utils.Log($"[Shaders]: Loading Shaders", LogType.Loading);
+      Utils.Log($"[Shaders]: Loading Shaders");
 
       string pathSpec;
       if (Application.platform == RuntimePlatform.WindowsPlayer && SystemInfo.graphicsDeviceVersion.StartsWith("OpenGL"))
@@ -83,13 +83,13 @@ namespace Waterfall
     /// </summary>
     public static void LoadAssetBundleAtPath(string bundlePath)
     {
-      Utils.Log($"[Shaders]: Loading shaders from {Path.GetFileNameWithoutExtension(bundlePath)}", LogType.Loading);
+      Utils.Log($"[Shaders]: Loading shaders from {Path.GetFileNameWithoutExtension(bundlePath)}");
       var bundle = AssetBundle.LoadFromFile(bundlePath);
       if (bundle == null) return;
       var shaders = bundle.LoadAllAssets<Shader>();
       foreach (var shader in shaders)
       {
-        Utils.Log($"[Shaders]: Adding {shader.name} ({Path.GetFileNameWithoutExtension(bundlePath)})", LogType.Loading);
+        Utils.Log($"[Shaders]: Adding {shader.name} ({Path.GetFileNameWithoutExtension(bundlePath)})");
         if (!ShaderDictionary.ContainsKey(shader.name))
         {
           ShaderDictionary.Add(shader.name, shader);
@@ -100,7 +100,7 @@ namespace Waterfall
           Utils.LogWarning($"[ShaderLoader]: A shader with {shader.name} already exists, replacing with new version");
         }
       }
-      Utils.Log($"[Shaders]: Loaded {ShaderDictionary.Count} shaders", LogType.Loading);
+      Utils.Log($"[Shaders]: Loaded {ShaderDictionary.Count} shaders");
 
       bundle.Unload(false); // unload the raw asset bundle
     }

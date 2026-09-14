@@ -87,7 +87,7 @@ namespace Waterfall.EffectControllers
 
       ConfigNodeName = EffectControllersMetadata.GetConfigNodeName(controllerType);
 
-      Utils.Log($"[{nameof(EffectControllersMetadata)}]: Registered controller type {ControllerType}", LogType.Modules);
+      Utils.Log($"[{nameof(EffectControllersMetadata)}]: Registered controller type {ControllerType}");
     }
 
     public WaterfallController CreateFromConfig(ConfigNode node)

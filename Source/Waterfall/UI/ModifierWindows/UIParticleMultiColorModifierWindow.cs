@@ -129,7 +129,7 @@ namespace Waterfall.UI
     }
     protected void EditGradient(Gradient toEdit, GradientUpdateFunction updateFunction, float lower, float upper)
     {
-      Utils.Log($"Started editing gradient {toEdit}", LogType.UI);
+      Utils.Log($"Started editing gradient {toEdit}");
       WaterfallUI.Instance.OpenGradientEditor(toEdit, updateFunction, lower, upper);
     }
     protected override void UpdateModifierPanel()

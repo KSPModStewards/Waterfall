@@ -85,7 +85,7 @@ namespace Waterfall
           p.Initialize(sys);
         }
       }
-      Utils.Log($"[WaterfallParticle]: Initialized Waterfall Particle at {parentTransform}, tracking {transformName}", LogType.Particles);
+      Utils.Log($"[WaterfallParticle]: Initialized Waterfall Particle at {parentTransform}, tracking {transformName}");
     }
 
     public void Reset(bool playImmediately)

@@ -50,7 +50,7 @@ namespace Waterfall
       engineModule = host.GetComponents<ModuleEngines>().FirstOrDefault(x => x.engineID == engineID);
       if (engineModule == null)
       {
-        Utils.Log($"[EngineEventController] Could not find engine ID {engineID}, using first module", LogType.Effects);
+        Utils.Log($"[EngineEventController] Could not find engine ID {engineID}, using first module");
         engineModule = host.part.FindModuleImplementing<ModuleEngines>();
       }
       multiEngine = host.GetComponent<MultiModeEngine>();
@@ -85,7 +85,7 @@ namespace Waterfall
         /// Check if engine state flipped
         if (getEngineStateFunc(engineModule))
         {
-          Utils.Log($"[EngineEventController] {eventName} fired on {engineID}", LogType.Effects);
+          Utils.Log($"[EngineEventController] {eventName} fired on {engineID}");
           eventReady   = false;
           eventPlaying = true;
           eventTime    = TimeWarp.deltaTime;
@@ -103,7 +103,7 @@ namespace Waterfall
         // Check to see if event can be reset
         if (!getEngineStateFunc(engineModule))
         {
-          Utils.Log($"[EngineEventController] {eventName} ready on {engineID}", LogType.Effects);
+          Utils.Log($"[EngineEventController] {eventName} ready on {engineID}");
           eventReady = true;
         }
       }

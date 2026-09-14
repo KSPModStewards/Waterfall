@@ -101,7 +101,7 @@ namespace Waterfall.UI.EffectControllersUI
 
     private void EditCurve(FastFloatCurve toEdit, CurveUpdateFunction function)
     {
-      Utils.Log($"Started editing curve {toEdit}", LogType.UI);
+      Utils.Log($"Started editing curve {toEdit}");
       WaterfallUI.Instance.OpenCurveEditor(toEdit, function);
     }
 

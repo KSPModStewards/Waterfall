@@ -34,7 +34,7 @@ namespace Waterfall.UI
     // Stock toolbar handling methods
     void OnDestroy()
     {
-      Utils.Log("[UI]: OnDestroy Fired", LogType.UI);
+      Utils.Log("[UI]: OnDestroy Fired");
       // Remove the stock toolbar button
       GameEvents.onGUIApplicationLauncherReady.Remove(OnGUIAppLauncherReady);
       GameEvents.onGUIApplicationLauncherDestroyed.Remove(OnGUIAppLauncherDestroyed);
@@ -50,7 +50,7 @@ namespace Waterfall.UI
     }
     protected void OnToolbarButtonToggle()
     {
-      Utils.Log("[UI]: Toolbar Button Toggled", LogType.UI);
+      Utils.Log("[UI]: Toolbar Button Toggled");
       UIBaseWindow.ToggleWindow();
       stockToolbarButton.SetTexture(UIBaseWindow.showWindow ? activeTexture : inactiveTexture);
     }
@@ -58,7 +58,7 @@ namespace Waterfall.UI
 
     protected void OnGUIAppLauncherReady()
     {
-      Utils.Log("[UI]: App Launcher Ready", LogType.UI);
+      Utils.Log("[UI]: App Launcher Ready");
 
       if (ApplicationLauncher.Ready && stockToolbarButton == null)
       {
@@ -75,7 +75,7 @@ namespace Waterfall.UI
 
     protected void OnGUIAppLauncherDestroyed()
     {
-      Utils.Log("[UI]: App Launcher Destroyed", LogType.UI);
+      Utils.Log("[UI]: App Launcher Destroyed");
       if (stockToolbarButton != null)
       {
         ApplicationLauncher.Instance.RemoveModApplication(stockToolbarButton);
@@ -85,7 +85,7 @@ namespace Waterfall.UI
 
     protected void onAppLaunchToggleOff()
     {
-      Utils.Log("[UI]: App Launcher Toggle Off", LogType.UI);
+      Utils.Log("[UI]: App Launcher Toggle Off");
       stockToolbarButton.SetTexture(inactiveTexture);
     }
 

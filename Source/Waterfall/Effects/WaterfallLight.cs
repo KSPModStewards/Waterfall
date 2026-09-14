@@ -32,7 +32,7 @@ namespace Waterfall
       node.TryGetValue("transform",     ref transformName);
       node.TryGetValue("baseTransform", ref baseTransformName);
 
-      Utils.Log($"[WaterfallLight]: Loading new light for {transformName}", LogType.Effects);
+      Utils.Log($"[WaterfallLight]: Loading new light for {transformName}");
     }
 
     public ConfigNode Save()
@@ -56,7 +56,7 @@ namespace Waterfall
           var l = t.GetComponent<Light>();
           if (l != null)
           {
-            Utils.Log($"[WaterfallLight]: Added light material from {t.name}", LogType.Effects);
+            Utils.Log($"[WaterfallLight]: Added light material from {t.name}");
             lights.Add(l);
           }
         }
@@ -70,7 +70,7 @@ namespace Waterfall
         lights.Add(l);
       }
 
-      Utils.Log($"[WaterfallLight]: Initialized WaterfallLight at {parentTransform}, {lights.Count} Count", LogType.Effects);
+      Utils.Log($"[WaterfallLight]: Initialized WaterfallLight at {parentTransform}, {lights.Count} Count");
 
       foreach (var l in lights)
       {

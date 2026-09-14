@@ -36,7 +36,7 @@ namespace Waterfall
         Utils.Log($"[WaterfallParticleSystem]: Set up emitter {emitter} on {transform.name}. \n" +
           $"emit: {particleEmit} \n" +
           $"shape {particleShape} \n" +
-          $"main {particleMain}", LogType.Particles);
+          $"main {particleMain}");
       }
     }
 

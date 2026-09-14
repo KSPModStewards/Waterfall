@@ -2,6 +2,7 @@
 
 - Fix broken logic for copying config nodes in some cases
 - Fix distortion effects drawing before plumes (Thanks @BobKermanIndustries for the report and investigation)
+- Remove Debug settings (obsolete now that all logging is gated behind Debug build config)
 
 
 ## 0.11.0 - 2026-04-29

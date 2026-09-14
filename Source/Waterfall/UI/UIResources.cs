@@ -22,7 +22,7 @@ namespace Waterfall.UI
       CreateStyleList();
       CreateColorList();
 
-      Utils.Log("[UI]: Loaded Assets", LogType.UI);
+      Utils.Log("[UI]: Loaded Assets");
     }
 
     /// <summary>

@@ -27,7 +27,7 @@ namespace Waterfall
     /// <returns></returns>
     public static GameObject GetParticles(string particleName)
     {
-      Utils.Log("[WaterfallParticleLoader]: Getting particle " + particleName, LogType.Effects);
+      Utils.Log("[WaterfallParticleLoader]: Getting particle " + particleName);
       return ParticleDictionary.ContainsKey(particleName) ? ParticleDictionary[particleName] : null;
     }
 
@@ -44,7 +44,7 @@ namespace Waterfall
     /// </summary>
     public static void LoadParticles()
     {
-      Utils.Log("[Particles]: Loading particle systems", LogType.Loading);
+      Utils.Log("[Particles]: Loading particle systems");
       string pathSpec = "*.particle";
       string path = Path.Combine(KSPUtil.ApplicationRootPath);
 
@@ -62,14 +62,14 @@ namespace Waterfall
     /// </summary>
     public static void LoadAssetBundleAtPath(string bundlePath)
     {
-      Utils.Log($"[Particles]: Loading {Path.GetFileNameWithoutExtension(bundlePath)}", LogType.Loading);
+      Utils.Log($"[Particles]: Loading {Path.GetFileNameWithoutExtension(bundlePath)}");
       var bundle = AssetBundle.LoadFromFile(bundlePath);
       if (bundle == null) return;
       var systems = bundle.LoadAllAssets<GameObject>();
 
       foreach (var sys in systems)
       {
-        Utils.Log($"[Particles]: Adding {sys.name}", LogType.Loading);
+        Utils.Log($"[Particles]: Adding {sys.name}");
         if (!ParticleDictionary.ContainsKey(sys.name))
         {
           ParticleDictionary.Add(sys.name, sys);
@@ -80,7 +80,7 @@ namespace Waterfall
         }
       }
 
-      Utils.Log($"[Particles]: Loaded {ParticleDictionary.Count} particle assets", LogType.Loading);
+      Utils.Log($"[Particles]: Loaded {ParticleDictionary.Count} particle assets");
     }
     public static List<string> FindValidParticleProperties(WaterfallParticlePropertyType propType)
     {
@@ -122,7 +122,7 @@ namespace Waterfall
 
           var m = new ParticleData(propertyName, categoryName, t, paramModes, range);
 
-          Utils.Log($"[Particles]: Adding {propertyName} property", LogType.Loading);
+          Utils.Log($"[Particles]: Adding {propertyName} property");
           ParticlePropertyMap.Add(propertyName, m);
         }
         catch

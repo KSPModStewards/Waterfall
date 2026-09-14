@@ -747,12 +747,12 @@ namespace Waterfall.UI
     {
       if (colorPickWindow != null)
       {
-        Utils.Log("[WaterfallUI] Changing Color Picker target", LogType.UI);
+        Utils.Log("[WaterfallUI] Changing Color Picker target");
         colorPickWindow.ChangeColor(c, fun, true);
       }
       else
       {
-        Utils.Log("[WaterfallUI] Opening Color Picker", LogType.UI);
+        Utils.Log("[WaterfallUI] Opening Color Picker");
         colorPickWindow = new(c, true, fun);
       }
 
@@ -763,12 +763,12 @@ namespace Waterfall.UI
     {
       if (texturePickWindow != null)
       {
-        Utils.Log("[WaterfallUI] Changing Texture Picker target", LogType.UI);
+        Utils.Log("[WaterfallUI] Changing Texture Picker target");
         texturePickWindow.ChangeTexture(current, fun);
       }
       else
       {
-        Utils.Log("[WaterfallUI] Opening Texture Picker", LogType.UI);
+        Utils.Log("[WaterfallUI] Opening Texture Picker");
         texturePickWindow = new(current, true, fun);
       }
 

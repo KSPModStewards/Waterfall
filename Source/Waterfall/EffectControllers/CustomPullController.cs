@@ -106,7 +106,7 @@ namespace Waterfall
       {
         if (possibleModules.Length > 0)
         {
-          Utils.Log($"[{nameof(CustomPullController)}]: Could not find engine ID {engineID}, using first module", LogType.Effects);
+          Utils.Log($"[{nameof(CustomPullController)}]: Could not find engine ID {engineID}, using first module");
           sourceModule = possibleModules[0] as PartModule;
         }
         else

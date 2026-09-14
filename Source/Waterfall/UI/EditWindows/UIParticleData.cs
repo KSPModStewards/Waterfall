@@ -261,7 +261,7 @@ namespace Waterfall.UI
     }
     protected void EditCurve(FastFloatCurve toEdit, CurveUpdateFunction updateFunction)
     {
-      Utils.Log($"Started editing curve {toEdit}", LogType.UI);
+      Utils.Log($"Started editing curve {toEdit}");
       WaterfallUI.Instance.OpenCurveEditor(toEdit, updateFunction);
     }
     protected void UpdateCurve1(FastFloatCurve curve)
@@ -512,7 +512,7 @@ namespace Waterfall.UI
     }
     protected void EditGradient(Gradient toEdit, GradientUpdateFunction updateFunction)
     {
-      Utils.Log($"Started editing gradient {toEdit}", LogType.UI);
+      Utils.Log($"Started editing gradient {toEdit}");
       WaterfallUI.Instance.OpenGradientEditor(toEdit, updateFunction);
     }
     protected void GenerateGradientThumbs()

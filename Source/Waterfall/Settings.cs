@@ -10,15 +10,6 @@ namespace Waterfall
     /// Settings go here
     public static bool ShowEffectEditor = false;
 
-    public static bool DebugModules = false;
-    public static bool DebugSettings = false;
-    public static bool DebugEffects = false;
-    public static bool DebugModifiers = false;
-    public static bool DebugMode = false;
-    public static bool DebugParticles = false;
-    public static bool DebugUIMode = false;
-    public static bool DebugLoading = false;
-
     public static double AtmosphereDensityExponent = 0.5128;
     public static float MinimumEffectIntensity = 0.005f;
     public static float MinimumLightIntensity = 0.05f;
@@ -45,21 +36,13 @@ namespace Waterfall
       _loadedOnce = true;
       var settingsNode = GameDatabase.Instance.GetConfigNode("Waterfall/WaterfallSettings/WATERFALL_SETTINGS");
 
-      Utils.Log("[Settings]: Started loading", LogType.Settings);
+      Utils.Log("[Settings]: Started loading");
       if (settingsNode != null)
       {
-        Utils.Log("[Settings]: Using specified settings", LogType.Settings);
+        Utils.Log("[Settings]: Using specified settings");
         // Setting parsing goes here
 
         settingsNode.TryGetValue("ShowEffectEditor", ref ShowEffectEditor);
-        settingsNode.TryGetValue("DebugModules", ref DebugModules);
-        settingsNode.TryGetValue("DebugSettings", ref DebugSettings);
-        settingsNode.TryGetValue("DebugEffects", ref DebugEffects);
-        settingsNode.TryGetValue("DebugParticles", ref DebugParticles);
-        settingsNode.TryGetValue("DebugModifiers", ref DebugModifiers);
-        settingsNode.TryGetValue("DebugMode", ref DebugMode);
-        settingsNode.TryGetValue("DebugLoading", ref DebugLoading);
-        settingsNode.TryGetValue("DebugUIMode", ref DebugUIMode);
         settingsNode.TryGetValue("AtmosphereDensityExponent", ref AtmosphereDensityExponent);
         settingsNode.TryGetValue("MinimumEffectIntensity", ref MinimumEffectIntensity);
         settingsNode.TryGetValue("MinimumLightIntensity", ref MinimumLightIntensity);
@@ -75,10 +58,10 @@ namespace Waterfall
       }
       else
       {
-        Utils.Log("[Settings]: Couldn't find settings file, using defaults", LogType.Settings);
+        Utils.Log("[Settings]: Couldn't find settings file, using defaults");
       }
 
-      Utils.Log("[Settings]: Finished loading", LogType.Settings);
+      Utils.Log("[Settings]: Finished loading");
     }
   }
 }

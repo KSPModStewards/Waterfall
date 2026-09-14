@@ -30,7 +30,7 @@ namespace Waterfall.UI
     public UILightEditWindow(WaterfallModel modelToEdit, bool show) : base(show)
     {
       model = modelToEdit;
-      Utils.Log($"[UILightEditWindow]: Started editing lights on {modelToEdit}", LogType.UI);
+      Utils.Log($"[UILightEditWindow]: Started editing lights on {modelToEdit}");
 
 
       light = modelToEdit.lights.First();
@@ -42,7 +42,7 @@ namespace Waterfall.UI
     public void ChangeLight(WaterfallModel modelToEdit)
     {
       model = modelToEdit;
-      Utils.Log($"[UILightEditWindow]: Started editing lights on {modelToEdit}", LogType.UI);
+      Utils.Log($"[UILightEditWindow]: Started editing lights on {modelToEdit}");
 
       light = modelToEdit.lights.First();
       GetLightValues();
@@ -100,7 +100,7 @@ namespace Waterfall.UI
       if (GUILayout.Button("", GUILayout.Width(60)))
       {
         WaterfallUI.Instance.OpenColorEditWindow(colorValue, UpdateColor);
-        Utils.Log("[CP] Open Window", LogType.UI);
+        Utils.Log("[CP] Open Window");
       }
 
       var tRect = GUILayoutUtility.GetLastRect();

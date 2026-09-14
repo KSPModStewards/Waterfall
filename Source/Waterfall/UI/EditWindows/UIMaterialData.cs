@@ -96,7 +96,7 @@ namespace Waterfall.UI
       if (GUILayout.Button("", GUILayout.Width(60)))
       {
         WaterfallUI.Instance.OpenColorEditWindow(color, UpdateColor);
-        Utils.Log($"[UIMaterialColorData] Open Color Picker for {name}", LogType.UI);
+        Utils.Log($"[UIMaterialColorData] Open Color Picker for {name}");
       }
 
       var tRect = GUILayoutUtility.GetLastRect();
@@ -106,7 +106,7 @@ namespace Waterfall.UI
     }
     protected void UpdateColor(Color c)
     {
-      Utils.Log($"[UIMaterialColorData] Applied color {name}", LogType.UI);
+      Utils.Log($"[UIMaterialColorData] Applied color {name}");
       color = c;
       colorTexture = TextureUtils.GenerateColorTexture(64, 32, color);
       model.SetColor(material, name, color);
@@ -152,7 +152,7 @@ namespace Waterfall.UI
       if (GUILayout.Button(texture))
       {
         WaterfallUI.Instance.OpenTextureEditWindow(texture, UpdateTexture);
-        Utils.Log("[TP] Open Window", LogType.UI);
+        Utils.Log("[TP] Open Window");
       }
 
       GUILayout.EndHorizontal();
@@ -182,7 +182,7 @@ namespace Waterfall.UI
     protected void UpdateTexture(string newTexture)
     {
       texture = newTexture;
-      Utils.Log($"[UIMaterialTextureData] Applied texture {name}", LogType.UI);
+      Utils.Log($"[UIMaterialTextureData] Applied texture {name}");
       model.SetTexture(material, name, texture);
     }
   }

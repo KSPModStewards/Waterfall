@@ -22,7 +22,7 @@ namespace Waterfall.UI
     {
       particleID = 0;
       model = modelToEdit;
-      Utils.Log($"[UIParticleEditWindow]: Started editing particles on {modelToEdit}", LogType.UI);
+      Utils.Log($"[UIParticleEditWindow]: Started editing particles on {modelToEdit}");
 
       particle = modelToEdit.particles[particleID];
 
@@ -41,7 +41,7 @@ namespace Waterfall.UI
     public void ChangeParticle(WaterfallModel modelToEdit)
     {
       model = modelToEdit;
-      Utils.Log($"[UIParticleEditWindow]: Started editing particles on {modelToEdit}", LogType.UI);
+      Utils.Log($"[UIParticleEditWindow]: Started editing particles on {modelToEdit}");
       particleID = 0;
       particleList = new string[model.particles.Count];
       for (int i = 0; i < model.particles.Count; i++)
@@ -126,7 +126,7 @@ namespace Waterfall.UI
 
     protected void InitializeParticleProperties(WaterfallParticle p)
     {
-      Utils.Log($"[ParticleEditor] Generating particle property map for {p}", LogType.UI);
+      Utils.Log($"[ParticleEditor] Generating particle property map for {p}");
 
       particleModules = new();
 

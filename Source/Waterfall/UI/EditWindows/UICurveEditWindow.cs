@@ -18,7 +18,7 @@ namespace Waterfall.UI
 
     public UICurveEditWindow(FastFloatCurve curveToEdit, bool show) : base(show)
     {
-      Utils.Log($"[UICurveEditWindow] Started editing curve {curveToEdit}", LogType.UI);
+      Utils.Log($"[UICurveEditWindow] Started editing curve {curveToEdit}");
 
 
       if (!showWindow)
@@ -32,7 +32,7 @@ namespace Waterfall.UI
     public UICurveEditWindow(FastFloatCurve curveToEdit, CurveUpdateFunction curveFun, bool show) : base(show)
     {
       curveUpdateFun = curveFun;
-      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}", LogType.UI);
+      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}");
 
       if (!showWindow)
         WindowPosition = new(Screen.width / 2, Screen.height / 2, 678, 600);
@@ -46,7 +46,7 @@ namespace Waterfall.UI
     {
       modifier    = modWin;
       modifierTag = tag;
-      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}", LogType.UI);
+      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}");
 
       if (!showWindow)
         WindowPosition = new(Screen.width / 2, Screen.height / 2, 678, 600);
@@ -58,7 +58,7 @@ namespace Waterfall.UI
 
     public void ChangeCurve(FastFloatCurve curveToEdit)
     {
-      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}", LogType.UI);
+      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}");
       curve  = curveToEdit;
       points = GraphUtils.FastFloatCurveToPoints(curveToEdit);
       UpdateCurve(out curve);
@@ -69,7 +69,7 @@ namespace Waterfall.UI
     public void ChangeCurve(FastFloatCurve curveToEdit, CurveUpdateFunction curveFun)
     {
       curveUpdateFun = curveFun;
-      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}", LogType.UI);
+      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}");
       curve  = curveToEdit;
       points = GraphUtils.FastFloatCurveToPoints(curveToEdit);
       UpdateCurve(out curve);
@@ -81,7 +81,7 @@ namespace Waterfall.UI
     {
       modifier    = modWin;
       modifierTag = tag;
-      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}", LogType.UI);
+      Utils.Log($"[UICurveEditWindow]: Started editing curve {curveToEdit}");
       curve  = curveToEdit;
       points = GraphUtils.FastFloatCurveToPoints(curveToEdit);
       UpdateCurve(out curve);

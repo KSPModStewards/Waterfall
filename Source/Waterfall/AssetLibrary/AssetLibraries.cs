@@ -21,7 +21,7 @@ namespace Waterfall
       Textures = new();
       Shaders  = new();
       Particles = new();
-      Utils.Log("[Asset Library]: Loading models", LogType.Loading);
+      Utils.Log("[Asset Library]: Loading models");
       foreach (var node in GameDatabase.Instance.GetConfigNodes(WaterfallConstants.ModelAssetNodeName))
       {
         try
@@ -34,8 +34,8 @@ namespace Waterfall
         }
       }
 
-      Utils.Log($"[Asset Library]: Loaded {Models.Count} models", LogType.Loading);
-      Utils.Log("[Asset Library]: Loading textures", LogType.Loading);
+      Utils.Log($"[Asset Library]: Loaded {Models.Count} models");
+      Utils.Log("[Asset Library]: Loading textures");
       foreach (var node in GameDatabase.Instance.GetConfigNodes(WaterfallConstants.TextureAssetNodeName))
       {
         try
@@ -47,9 +47,9 @@ namespace Waterfall
           Utils.LogError($"[Asset Libary] Issue loading model from node: {node}");
         }
       }
-      Utils.Log($"[Asset Library]: Loaded {Textures.Count} textures", LogType.Loading);
+      Utils.Log($"[Asset Library]: Loaded {Textures.Count} textures");
 
-      Utils.Log("[Asset Library]: Loading shaders", LogType.Loading);
+      Utils.Log("[Asset Library]: Loading shaders");
       foreach (var node in GameDatabase.Instance.GetConfigNodes(WaterfallConstants.ShaderAssetNodeName))
       {
         try
@@ -61,9 +61,9 @@ namespace Waterfall
           Utils.LogError($"[Asset Libary] Issue loading model from node: {node}");
         }
       }
-      Utils.Log($"[Asset Library]: Loaded {Shaders.Count} shaders", LogType.Loading);
+      Utils.Log($"[Asset Library]: Loaded {Shaders.Count} shaders");
 
-      Utils.Log("[Asset Library]: Loading particle definitionss", LogType.Loading);
+      Utils.Log("[Asset Library]: Loading particle definitionss");
       foreach (var node in GameDatabase.Instance.GetConfigNodes(WaterfallConstants.ParticleAssetNodeName))
       {
         try
@@ -75,7 +75,7 @@ namespace Waterfall
           Utils.LogError($"[Asset Libary] Issue loading particle definition from node: {node}");
         }
       }
-      Utils.Log($"[Asset Library]: Loaded {Particles.Count} particle definition", LogType.Loading);
+      Utils.Log($"[Asset Library]: Loaded {Particles.Count} particle definition");
     }
 
     public static List<WaterfallAsset> GetModels(AssetWorkflow flow)

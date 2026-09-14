@@ -65,7 +65,7 @@ namespace Waterfall
       node.TryGetValue("randomizeSeed", ref useAutoRandomization);
 
       materials = new();
-      Utils.Log(String.Format("[WaterfallMaterial]: Loading new material for {0} ", transformName), LogType.Effects);
+      Utils.Log(String.Format("[WaterfallMaterial]: Loading new material for {0} ", transformName));
 
       matProperties = new();
       foreach (var subnode in node.GetNodes(WaterfallConstants.TextureNodeName))
@@ -134,7 +134,7 @@ namespace Waterfall
                                       t.GetComponent<MeshFilter>()));
               }
 
-              Utils.Log($"Added rendered material from {t.name}", LogType.Effects);
+              Utils.Log($"Added rendered material from {t.name}");
               materials.Add(r.material);
             }
           }
@@ -168,7 +168,7 @@ namespace Waterfall
             mat.SetFloat(ShaderPropertyID._Seed, Random.Range(-1f, 1f));
           }
 
-          Utils.Log(String.Format("[WaterfallMaterial]: Assigned new shader {0} ", mat.shader), LogType.Effects);
+          Utils.Log(String.Format("[WaterfallMaterial]: Assigned new shader {0} ", mat.shader));
         }
       }
     }
@@ -275,7 +275,7 @@ namespace Waterfall
     /// <param name="value"></param>
     public void SetTexture(string propertyName, string value)
     {
-      Utils.Log($"[WaterfallMaterial] Changing {propertyName} to {value}", LogType.Effects);
+      Utils.Log($"[WaterfallMaterial] Changing {propertyName} to {value}");
       var prop = matProperties.Find(x => x.propertyName == propertyName);
       if (prop is WaterfallMaterialTextureProperty t && prop != null)
         t.texturePath = value;
@@ -293,7 +293,7 @@ namespace Waterfall
 
       foreach (var mat in materials)
       {
-        Utils.Log($"[WaterfallMaterial] Changing {propertyName} to {value} on {mat}", LogType.Effects);
+        Utils.Log($"[WaterfallMaterial] Changing {propertyName} to {value} on {mat}");
         mat.SetTexture(propertyName, GameDatabase.Instance.GetTexture(value, false));
       }
     }

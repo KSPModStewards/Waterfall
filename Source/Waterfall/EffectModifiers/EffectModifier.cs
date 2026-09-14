@@ -65,7 +65,7 @@ namespace Waterfall
       ConfigNode.LoadObjectFromConfig(this, node);
       node.TryGetValue("name", ref fxName);
       node.TryGetEnum("combinationType", ref effectMode, EffectModifierMode.REPLACE);
-      Utils.Log($"[EffectModifier]: Loading modifier {fxName}", LogType.Modifiers);
+      Utils.Log($"[EffectModifier]: Loading modifier {fxName}");
     }
 
     /// <summary>
@@ -95,7 +95,7 @@ namespace Waterfall
         randomController.referencingModifierCount++;
       }
 
-      Utils.Log($"[EffectModifier]: Initializing modifier {fxName}", LogType.Modifiers);
+      Utils.Log($"[EffectModifier]: Initializing modifier {fxName}");
       var roots = parentEffect.GetModelTransforms();
       xforms = new();
       foreach (var t in roots)

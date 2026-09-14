@@ -135,7 +135,7 @@ namespace Waterfall
 
     public void Initialize(Transform parent, bool fromNothing)
     {
-      Utils.Log(String.Format("[WaterfallModel]: Instantiating model from {0} ", path), LogType.Effects);
+      Utils.Log(String.Format("[WaterfallModel]: Instantiating model from {0} ", path));
       if (!GameDatabase.Instance.ExistsModel(path))
         Utils.LogError(String.Format("[WaterfallModel]: Unabled to find model {0} in GameDatabase", path));
       var inst = Object.Instantiate(GameDatabase.Instance.GetModelPrefab(path), parent.position, parent.rotation);
@@ -148,7 +148,7 @@ namespace Waterfall
 
       if (asset != null && asset != "")
       {
-        Utils.Log($"[WaterfallModel]: Instantiating particle asset from{asset} ", LogType.Effects);
+        Utils.Log($"[WaterfallModel]: Instantiating particle asset from{asset} ");
         GameObject go = GameObject.Instantiate(WaterfallParticleLoader.GetParticles(asset),
           Vector3.zero, Quaternion.identity) as GameObject;
 
@@ -207,7 +207,7 @@ namespace Waterfall
       }
       foreach (var p in particles)
       {
-        Utils.Log(String.Format("[WaterfallModel]: Initializing system {0} ", p.transformName), LogType.Effects);
+        Utils.Log(String.Format("[WaterfallModel]: Initializing system {0} ", p.transformName));
         p.Initialize(modelTransform);
       }
 
@@ -234,7 +234,7 @@ namespace Waterfall
       modelRotationOffset = rotation;
       modelScaleOffset = scale;
 
-      Utils.Log($"[WaterfallModel] Applying model offsets {position}, {rotation}, {scale}", LogType.Effects);
+      Utils.Log($"[WaterfallModel] Applying model offsets {position}, {rotation}, {scale}");
 
       positionOffsetString = $"{position.x}, {position.y}, {position.z}";
       rotationOffestString = $"{rotation.x}, {rotation.y}, {rotation.z}";

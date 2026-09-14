@@ -199,7 +199,7 @@ namespace Waterfall
 
     public void CleanupEffect()
     {
-      Utils.Log($"[WaterfallEffect]: Deleting effect {name}", LogType.Effects);
+      Utils.Log($"[WaterfallEffect]: Deleting effect {name}");
       model.Cleanup();
     }
     public void Reset(bool playImmediately)
@@ -210,7 +210,7 @@ namespace Waterfall
     {
       parentModule = host;
       var parents = parentModule.part.FindModelTransforms(parentName);
-      Utils.Log($"[WaterfallEffect]: Initializing effect {name} at {parentName} [{parents.Length} instances]; relative scaling: {useRelativeScaling}", LogType.Effects);
+      Utils.Log($"[WaterfallEffect]: Initializing effect {name} at {parentName} [{parents.Length} instances]; relative scaling: {useRelativeScaling}");
 
       effectTransforms.Clear();
       baseScales.Clear();
@@ -244,15 +244,15 @@ namespace Waterfall
         model.Initialize(effectTransform, fromNothing);
 
         baseScales.Add(effectTransform.localScale);
-        Utils.Log($"[WaterfallEffect] Scale: {effectTransform.localScale}", LogType.Effects);
+        Utils.Log($"[WaterfallEffect] Scale: {effectTransform.localScale}");
 
         effectTransform.localPosition    = TemplatePositionOffset;
         effectTransform.localEulerAngles = TemplateRotationOffset;
         effectTransform.localScale       = Vector3.Scale(baseScales[i], TemplateScaleOffset);
 
-        Utils.Log($"[WaterfallEffect] local Scale {effectTransform.localScale}, baseScale, {baseScales[i]}, {Vector3.Scale(baseScales[i], TemplateScaleOffset)}", LogType.Effects);
+        Utils.Log($"[WaterfallEffect] local Scale {effectTransform.localScale}, baseScale, {baseScales[i]}, {Vector3.Scale(baseScales[i], TemplateScaleOffset)}");
 
-        Utils.Log($"[WaterfallEffect] Applied template offsets {TemplatePositionOffset}, {TemplateRotationOffset}, {TemplateScaleOffset}", LogType.Effects);
+        Utils.Log($"[WaterfallEffect] Applied template offsets {TemplatePositionOffset}, {TemplateRotationOffset}, {TemplateScaleOffset}");
 
         effectTransforms.Add(effectTransform);
       }
@@ -322,7 +322,7 @@ namespace Waterfall
       TemplateRotationOffset = rotation;
       TemplateScaleOffset    = scale;
 
-      Utils.Log($"[WaterfallEffect] Applying template offsets from FN2 {position}, {rotation}, {scale}", LogType.Effects);
+      Utils.Log($"[WaterfallEffect] Applying template offsets from FN2 {position}, {rotation}, {scale}");
 
 
       for (int i = 0; i < effectTransforms.Count; i++)

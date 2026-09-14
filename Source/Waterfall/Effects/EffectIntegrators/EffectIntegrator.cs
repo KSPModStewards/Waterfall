@@ -43,7 +43,7 @@ namespace Waterfall
 
     public EffectIntegrator(WaterfallEffect effect, EffectModifier mod)
     {
-      Utils.Log($"[EffectIntegrator]: Initializing integrator for {effect.name} on modifier {mod.fxName}", LogType.Modifiers);
+      Utils.Log($"[EffectIntegrator]: Initializing integrator for {effect.name} on modifier {mod.fxName}");
       transformName = mod.transformName;
       parentEffect = effect;
       this.testIntensity = mod.TestIntensity;

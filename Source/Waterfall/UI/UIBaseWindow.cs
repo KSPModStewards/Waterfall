@@ -25,7 +25,7 @@ namespace Waterfall.UI
 
     protected virtual void Awake()
     {
-      Utils.Log("[UI]: Awake fired", LogType.UI);
+      Utils.Log("[UI]: Awake fired");
 
       gameObject.layer = 5;
       gameObject.AddComponent<RectTransform>();
@@ -47,7 +47,7 @@ namespace Waterfall.UI
 
     protected virtual void Start()
     {
-      Utils.Log("[UI]: Start fired", LogType.UI);
+      Utils.Log("[UI]: Start fired");
     }
 
     protected virtual void OnGUI()
@@ -68,7 +68,7 @@ namespace Waterfall.UI
     /// </summary>
     public static void ToggleWindow()
     {
-      Utils.Log("[UI]: Toggle Window", LogType.UI);
+      Utils.Log("[UI]: Toggle Window");
       showWindow = !showWindow;
     }
 
@@ -77,7 +77,7 @@ namespace Waterfall.UI
     /// </summary>
     protected virtual void InitUI()
     {
-      Utils.Log("[UI]: Initializing", LogType.UI);
+      Utils.Log("[UI]: Initializing");
       initUI = true;
     }
 

@@ -300,12 +300,12 @@ namespace Waterfall.UI
       WaterfallEffect newFX;
       if (WaterfallUI.Instance.selectedTemplate == null)
       {
-        Utils.Log("[UIAddEffectWindow]: Creating effect", LogType.UI);
+        Utils.Log("[UIAddEffectWindow]: Creating effect");
         newFX = new(parentName, model);
       }
       else
       {
-        Utils.Log($"[UIAddEffectWindow]: Creating effect as part of template {WaterfallUI.Instance.selectedTemplate.templateName}", LogType.UI);
+        Utils.Log($"[UIAddEffectWindow]: Creating effect as part of template {WaterfallUI.Instance.selectedTemplate.templateName}");
         newFX = new(parentName, model, WaterfallUI.Instance.selectedTemplate);
       }
 

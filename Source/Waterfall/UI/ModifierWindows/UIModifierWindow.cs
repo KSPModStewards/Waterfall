@@ -136,7 +136,7 @@ namespace Waterfall.UI
     /// <param name="toEdit"></param>
     protected void EditCurve(FastFloatCurve toEdit, CurveUpdateFunction updateFunction)
     {
-      Utils.Log($"Started editing curve {toEdit}", LogType.UI);
+      Utils.Log($"Started editing curve {toEdit}");
       curveEditor = WaterfallUI.Instance.OpenCurveEditor(toEdit, updateFunction);
     }
 
@@ -146,7 +146,7 @@ namespace Waterfall.UI
     /// <param name="toEdit"></param>
     protected void EditCurve(FastFloatCurve toEdit, string tag)
     {
-      Utils.Log($"Started editing curve {toEdit}", LogType.UI);
+      Utils.Log($"Started editing curve {toEdit}");
       curveEditor = WaterfallUI.Instance.OpenCurveEditor(toEdit, this, tag);
     }
 

@@ -58,7 +58,7 @@ namespace Waterfall.UI
 
     public UIGradientEditWindow(Gradient gradToEdit, float lower, float upper, bool show) : base(show)
     {
-      Utils.Log($"Started editing gradient {gradToEdit} with low={lower}, upper={upper}", LogType.UI);
+      Utils.Log($"Started editing gradient {gradToEdit} with low={lower}, upper={upper}");
 
       lowerBound = lower;
       upperBound = upper;
@@ -72,7 +72,7 @@ namespace Waterfall.UI
     public UIGradientEditWindow(Gradient gradToEdit, GradientUpdateFunction gradientFun, float lower, float upper, bool show) : base(show)
     {
       gradientUpdateFun = gradientFun;
-      Utils.Log($"Started editing gradient {gradToEdit} with low={lower}, upper={upper}", LogType.UI);
+      Utils.Log($"Started editing gradient {gradToEdit} with low={lower}, upper={upper}");
 
 
       lowerBound = lower;
@@ -103,7 +103,7 @@ namespace Waterfall.UI
       gradientUpdateFun = gradFun;
       lowerBound = lower;
       upperBound = upper;
-      Utils.Log($"Started editing gradient {gradientToEdit} with low={lower}, upper={upper}", LogType.UI);
+      Utils.Log($"Started editing gradient {gradientToEdit} with low={lower}, upper={upper}");
       gradient = gradientToEdit;
       CreateUIKeysFromGradient(gradient);
       UpdateGradient(out gradient);
@@ -519,7 +519,7 @@ namespace Waterfall.UI
 
     public void UpdateColor(Color col)
     {
-      Utils.Log("[GradientEditWindow] Updated Color", LogType.UI);
+      Utils.Log("[GradientEditWindow] Updated Color");
       colorVal = col;
       selectedColorKey.color = colorVal;
       selectedColorKey.ChangedColor();

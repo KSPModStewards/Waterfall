@@ -6,55 +6,16 @@ using UnityEngine;
 
 namespace Waterfall
 {
-  public enum LogType
-  {
-    UI,
-    Settings,
-    Modules,
-    Effects,
-    Modifiers,
-    Particles,
-    Loading,
-    Any
-  }
-
   public static class Utils
   {
     /// <summary>
     ///   Log a message with the mod name tag prefixed
     /// </summary>
     /// <param name="str">message string </param>
+    [Conditional("DEBUG")]
     public static void Log(string str)
     {
-      Log(str, LogType.Any);
-    }
-
-    /// <summary>
-    /// Is logging enabled?
-    /// </summary>
-    /// <param name="logType">Logging Type</param>
-    /// <returns>True if logging is enabled</returns>
-    public static bool IsLogging(LogType logType = LogType.Any)
-    {
-      return logType == LogType.Any
-              || (logType == LogType.Settings && Settings.DebugSettings)
-              || (logType == LogType.UI && Settings.DebugUIMode)
-              || (logType == LogType.Loading && Settings.DebugLoading)
-              || (logType == LogType.Modules && Settings.DebugModules)
-              || (logType == LogType.Effects && Settings.DebugEffects)
-              || (logType == LogType.Effects && Settings.DebugParticles)
-              || (logType == LogType.Modifiers && Settings.DebugModifiers);
-    }
-
-    /// <summary>
-    ///   Log a message with the mod name tag prefixed
-    /// </summary>
-    /// <param name="str">message string </param>
-    [Conditional("DEBUG")]
-    public static void Log(string str, LogType logType)
-    {
-      if (IsLogging(logType))
-        KSPCommunityLib.Logging.Log.Debug(str);
+      KSPCommunityLib.Logging.Log.Debug(str);
     }
 
     /// <summary>

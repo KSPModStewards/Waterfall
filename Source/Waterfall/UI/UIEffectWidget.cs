@@ -75,7 +75,7 @@ namespace Waterfall.UI
         if (toggle != enabled)
         {
           enabled = toggle;
-          Utils.Log($"[EffectWidget] Set state of {fx.name} to {enabled}", LogType.UI);
+          Utils.Log($"[EffectWidget] Set state of {fx.name} to {enabled}");
           fx.SetEnabled(enabled);
         }
 
@@ -107,7 +107,7 @@ namespace Waterfall.UI
         if (toggle != enabled)
         {
           enabled = toggle;
-          Utils.Log($"[EffectWidget] Set state of {fx.name} to {enabled}", LogType.UI);
+          Utils.Log($"[EffectWidget] Set state of {fx.name} to {enabled}");
           fx.SetEnabled(enabled);
         }
 
