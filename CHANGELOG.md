@@ -3,6 +3,8 @@
 - Fix broken logic for copying config nodes in some cases
 - Fix distortion effects drawing before plumes (Thanks @BobKermanIndustries for the report and investigation)
 - Remove Debug settings (obsolete now that all logging is gated behind Debug build config)
+- Simplified DirectModifier slightly, fixing a bug where EffectColorFromLightModifier would not do anything if the effectMode was not REPLACE
+- Improved wrapping behavior for EffectUVScrollModifier (which doesn't seem to be used anywhere)
 
 
 ## 0.11.0 - 2026-04-29

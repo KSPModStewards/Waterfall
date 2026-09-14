@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Waterfall
 {
+  /// <summary>
+  /// DirectModifier is a base class for effect modifiers that apply their effect directly to the target without using an integrator
+  /// </summary>
   public abstract class DirectModifier : EffectModifier
   {
     protected DirectModifier() { }
@@ -13,29 +16,10 @@ namespace Waterfall
     protected DirectModifier(ConfigNode node) : base(node) { }
 
     /// <summary>
-    ///   Apply the effect with the various combine modes
+    /// Applies the effect to the target.  Implementers should call UpdateRandomValues() and consume the stored random value
     /// </summary>
     /// <param name="strength"></param>
-    public virtual void Apply(float[] strength)
-    {
-      UpdateRandomValue();
-
-      switch (effectMode)
-      {
-        case EffectModifierMode.REPLACE:
-          ApplyReplace(strength);
-          break;
-        case EffectModifierMode.ADD:
-          ApplyAdd(strength);
-          break;
-        case EffectModifierMode.MULTIPLY:
-          ApplyMultiply(strength);
-          break;
-        case EffectModifierMode.SUBTRACT:
-          ApplySubtract(strength);
-          break;
-      }
-    }
+    public abstract void Apply(float[] strength);
 
     public override EffectIntegrator CreateIntegrator()
     {
@@ -43,13 +27,5 @@ namespace Waterfall
       Utils.LogError($"DirectModifier.CreateIntegrator() called but this has no corresponding integrator!");
       return null;
     }
-
-    protected virtual void ApplyReplace(float[] strength) { }
-
-    protected virtual void ApplyAdd(float[] strength) { }
-
-    protected virtual void ApplyMultiply(float[] strength) { }
-
-    protected virtual void ApplySubtract(float[] strength) { }
   }
 }

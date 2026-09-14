@@ -51,16 +51,16 @@ namespace Waterfall
 
     public override void Apply(float[] strengthList)
     {
+      // NOTE: not currently used.  But I can't find any cfgs actually using this class.
+      // We should create a random normalized vec2 for the direction, then scale it by the random value
+      UpdateRandomValue();
+
       float strength = strengthList[0];
       for (int i = 0; i < m.Length; i++)
       {
         var   original = m[i].GetTextureOffset(textureName);
-        float x        = original.x + scrollCurveX.Evaluate(strength) * Time.deltaTime;
-        if (x >= 1f || x <= -1f)
-          x = 0f;
-        float y = original.y + scrollCurveY.Evaluate(strength) * Time.deltaTime;
-        if (y >= 1f || y <= -1f)
-          y = 0f;
+        float x = Mathf.Repeat(original.x + scrollCurveX.Evaluate(strength) * Time.deltaTime, 1f);
+        float y = Mathf.Repeat(original.y + scrollCurveY.Evaluate(strength) * Time.deltaTime, 1f);
         m[i].SetTextureOffset(textureName, new(x, y));
       }
     }
